@@ -72,9 +72,28 @@ sol = Solution()
 
 # Example 1: Output: 5, nums = [1,1,2,2,3,_]
 nums = [1,1,1,2,2,3]
-print(sol.removeDuplicates(nums=nums))
+# print(sol.removeDuplicates(nums=nums))
 
 
 # Example 2: Output: 7, nums = [0,0,1,1,2,3,3,_,_]
 nums = [0,0,1,1,1,1,2,3,3]
-print(sol.removeDuplicates(nums=nums))
+# print(sol.removeDuplicates(nums=nums))
+
+
+# --------------------------------------------------------------
+from collections import Counter
+
+nums_occ = Counter(nums)
+
+k = 0
+for value in nums_occ.values():
+    if value <= 2:
+        k +=value
+    else:
+        value = value - 2
+        k += value 
+
+
+print(k) 
+
+
