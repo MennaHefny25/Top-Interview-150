@@ -31,4 +31,32 @@ class Solution(object):
         :type n: int
         :rtype: bool
         """
-        pass
+        # Helper function to calculate the sum of the squares of digits of a number
+        def get_next(number):
+            total_sum = 0
+            while number > 0:
+                digit = number % 10  
+                total_sum += digit ** 2  
+                number = number // 10  
+            return total_sum  
+        
+        seen = set()  # Create a set to track numbers we've already seen to detect cycles
+        
+        # Continue the process until n becomes 1 (happy number) or a cycle is detected
+        while n != 1 and n not in seen:
+            seen.add(n)  
+            n = get_next(n)  
+        
+        return n == 1
+
+
+sol = Solution()
+# Example 1: Output: true
+n = 19
+
+print(sol.isHappy(n=n))
+
+# Example 2: Output: false
+n = 2
+
+print(sol.isHappy(n=n))
